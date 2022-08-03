@@ -1,0 +1,48 @@
+{
+  "name": "projeto22-tattoome-back",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx prisma migrate deploy && tsc",
+    "start": "node dist/src/server.ts",
+    "dev": "nodemon src/server.ts",
+    "dev:test": "dotenv -e .env.test prisma migrate dev && dotenv -e .env.test nodemon src/server.ts",
+    "test": "dotenv -e .env.test prisma migrate dev && NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest -- --coverage -i",
+    "test:unit": "NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest -- -i --coverage --testPathPattern=tests/unit",
+    "test:int": "dotenv -e .env.test prisma migrate dev && NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest -- -i --coverage --testPathPattern=tests/integration"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "chalk": "^5.0.1",
+    "cors": "^2.8.5",
+    "cryptr": "^6.0.3",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-async-errors": "^3.1.1",
+    "helmet": "^5.1.0",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "@prisma/client": "^4.0.0",
+    "@types/bcrypt": "^5.0.0",
+    "@types/chalk": "^2.2.0",
+    "@types/cors": "^2.8.12",
+    "@types/cryptr": "^4.0.1",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.13",
+    "@types/helmet": "^4.0.0",
+    "@types/joi": "^17.2.3",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/node": "^18.0.3",
+    "nodemon": "^2.0.19",
+    "prisma": "^4.0.0",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4"
+  }
+}
