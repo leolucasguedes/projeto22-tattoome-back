@@ -9,3 +9,110 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id          Int          @id @default(autoincrement())
+  name        String
+  email       String       @unique
+  password    String
+  createdAt   DateTime     @default(now())
+  depositions Deposition[]
+  budgets     Budget[]
+
+  @@map("users")
+}
+
+model Feedback {
+  id        Int      @id @default(autoincrement())
+  username  String
+  text      String
+  image     Bytes
+  createdAt DateTime @default(now())
+
+  @@map("feedbacks")
+}
+
+model Deposition {
+  id        Int      @id @default(autoincrement())
+  stars     Int
+  text      String
+  username  String
+  createdAt DateTime @default(now())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@map("depositions")
+}
+
+model Portfolio {
+  id     Int           @id @default(autoincrement())
+  type   PortfolioTYpe
+  arts   Art[]
+  flashs Flash[]
+  works  Work[]
+
+  @@map("portfolio_images")
+}
+
+enum PortfolioTYpe {
+  Work
+  Art
+  Flash
+}
+
+model Art {
+  id          Int       @id @default(autoincrement())
+  description String
+  image       Bytes
+  createdAt   DateTime  @default(now())
+  portfolioId Int
+  portfolio   Portfolio @relation(fields: [portfolioId], references: [id])
+
+  @@map("arts")
+}
+
+model Flash {
+  id          Int       @id @default(autoincrement())
+  description String
+  image       Bytes
+  createdAt   DateTime  @default(now())
+  portfolioId Int
+  portfolio   Portfolio @relation(fields: [portfolioId], references: [id])
+
+  @@map("flashs")
+}
+
+model Work {
+  id          Int       @id @default(autoincrement())
+  description String
+  image       Bytes
+  createdAt   DateTime  @default(now())
+  portfolioId Int
+  portfolio   Portfolio @relation(fields: [portfolioId], references: [id])
+
+  @@map("works")
+}
+
+model Budget {
+  id          Int         @id @default(autoincrement())
+  name        String
+  email       String
+  number      String
+  description String
+  size        String
+  createdAt   DateTime    @default(now())
+  userId      Int?
+  user        User?        @relation(fields: [userId], references: [id])
+  references  Reference[]
+
+  @@map("budgets")
+}
+
+model Reference {
+  id       Int    @id @default(autoincrement())
+  image    Bytes
+  budgetId Int
+  budget   Budget @relation(fields: [budgetId], references: [id])
+
+  @@map("references")
+}
