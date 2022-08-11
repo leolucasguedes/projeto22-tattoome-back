@@ -1,5 +1,6 @@
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 export default {
+    setupFilesAfterEnv: ["./jest.setup.js"],
     preset: "ts-jest",
     testEnvironment: "node",
     extensionsToTreatAsEsm: [".ts"],

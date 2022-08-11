@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-import * as AR from "../repositories/authRepository.js";
+import * as authRepository from "../repositories/authRepository.js";
 import { CreateUserData, LoginBody } from "../schemas/authSchema.js";
 
 import AppError from "../config/error.js";
@@ -11,7 +11,7 @@ import "../config/setup.js"
 
 export async function createUser(userInfo: CreateUserData) {
   const SALT_ROUNDS: number = +process.env.SALT_ROUNDS || 10;
-  const userRegistered = await AR.findByEmail(userInfo.email);
+  const userRegistered = await authRepository.findByEmail(userInfo.email);
   if (userRegistered) {
     throw new AppError(
       "Email alrealdy registered",
@@ -24,12 +24,12 @@ export async function createUser(userInfo: CreateUserData) {
   const hashPassword = bcrypt.hashSync(userInfo.password, SALT_ROUNDS);
   userInfo.password = hashPassword;
 
-  await AR.createUser(userInfo);
+  await authRepository.create(userInfo);
   AppLog("Service", "User Created");
 }
 
 export async function loginUser(userInfo: LoginBody) {
-  const user = await AR.findByEmail(userInfo.email);
+  const user = await authRepository.findByEmail(userInfo.email);
 
   if (!user) {
     throw new AppError(
