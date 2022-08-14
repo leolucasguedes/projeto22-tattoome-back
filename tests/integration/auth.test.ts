@@ -5,6 +5,7 @@ import * as userFactory from "../factories/userFactory.js"
 
 beforeAll(async () => {
   const data = {
+	name: "admin",
     email: "admin@driven.com",
     password: "12345678",
     confirmPassword: "12345678",

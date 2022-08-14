@@ -18,6 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "@faker-js/faker": "^7.4.0",
+    "@types/multer": "^1.4.7",
     "bcrypt": "^5.0.1",
     "chalk": "^5.0.1",
     "cors": "^2.8.5",
@@ -28,7 +29,9 @@
     "express-async-errors": "^3.1.1",
     "helmet": "^5.1.0",
     "joi": "^17.6.0",
-    "jsonwebtoken": "^8.5.1"
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.5-lts.1",
+    "multer-storage-cloudinary": "^4.0.0"
   },
   "devDependencies": {
     "@prisma/client": "^4.1.1",

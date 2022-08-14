@@ -4,6 +4,7 @@ import app from "../../src/app.js"
 
 const newUser = () => {
 	return {
+		name: faker.name,
 		email: faker.internet.email(),
 		password: "12345678",
 		confirmPassword: "12345678"
@@ -18,16 +19,10 @@ const newUserWithoutFields = () => {
 
 const alreadyRegisteredUser = () => {
 	return {
+		name: faker.name,
 		email: "admin@driven.com",
 		password: "12345678",
 		confirmPassword: "12345678"
-	}
-}
-
-const alreadyRegisteredData = () => {
-	return {
-		email: "admin@driven.com",
-		password: "123456",
 	}
 }
 
@@ -66,7 +61,6 @@ export {
 	newUser,
 	newUserWithoutFields,
 	alreadyRegisteredUser,
-	alreadyRegisteredData,
 	wrongPassword,
 	wrongEmail,
 	dataWhithoutField,

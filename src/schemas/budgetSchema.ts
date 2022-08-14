@@ -2,6 +2,7 @@ import Joi from "joi";
 import { Budget } from "@prisma/client";
 
 export type CreateBudgetData = Omit<Budget, "id" | "createdAt">;
+export type CreateBudgetDataNoUser = Omit<CreateBudgetData, "userId">;
 
 const budgetSchema = Joi.object<CreateBudgetData>({
     name: Joi.string().required(),
