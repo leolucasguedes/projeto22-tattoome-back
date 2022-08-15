@@ -2,8 +2,8 @@ import path from "path";
 import multer from "multer";
 import crypto from "crypto";
 
-const multerConfig = {
-  dest: path.resolve("../assets/images"),
+const multerConfig: any = {
+  dest: path.resolve(__dirname, "..", "assets", "images"),
   storage: multer.diskStorage({
     destination: (req, file, cb) => {
       cb(null, path.resolve("../assets/images"));
@@ -21,14 +21,14 @@ const multerConfig = {
   limits: {
     fileSize: 3 * 1024 * 1024,
   },
-  fileFilter: (req, file, cb) => {
-    const allowedMImes = [
+  fileFilter: (req: any, file: any, cb: any) => {
+    const allowedMimes = [
       "image/jpeg",
       "image/pjpeg",
       "image/png",
       "image/gif",
     ];
-    if (allowedMImes.includes(file.mimetype)) {
+    if (allowedMimes.includes(file.mimetype)) {
       cb(null, true);
     } else {
       cb(new Error("Invalid file type"));
