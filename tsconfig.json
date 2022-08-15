@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
       "esModuleInterop": true,
-      "module": "es6",
+      "module": "CommonJS",
       "moduleResolution": "node",
       "outDir": "dist"
     },

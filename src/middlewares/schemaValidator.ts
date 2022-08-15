@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import { Schema } from 'joi';
 
-import AppError from '../config/error.js';
-import AppLog from '../events/AppLog.js';
+import AppError from '../config/error';
+import AppLog from '../events/AppLog';
 
 export default function validSchema(schema: Schema, endpoint: string) {
   return async (req: Request, res: Response, next: NextFunction) => {

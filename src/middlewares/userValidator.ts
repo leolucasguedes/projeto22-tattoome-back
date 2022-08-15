@@ -1,8 +1,8 @@
 import { User } from "@prisma/client";
 import { Request, Response, NextFunction } from "express";
-import AppError from "../config/error.js";
+import AppError from "../config/error";
 
-import { findUserByEmail } from "../repositories/authRepository.js";
+import { findUserByEmail } from "../repositories/authRepository";
 
 export async function verifyUser(req: Request, res: Response, next: NextFunction) {
   const { email }: { email: string } = req.body;
@@ -19,5 +19,6 @@ export async function verifyUser(req: Request, res: Response, next: NextFunction
   }
 
   res.locals.user = user;
-  return next();
+  console.log(user);
+  next();
 }

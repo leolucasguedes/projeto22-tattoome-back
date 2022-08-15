@@ -1,15 +1,9 @@
-import prisma from "../../src/config/db.js";
-import app from "../../src/app.js";
+import prisma from "../../src/config/db";
+import app from "../../src/app";
 import supertest from "supertest";
-import * as testFactory from "../factories/testsFactory.js";
+import * as testFactory from "../factories/testsFactory";
 
 describe("Depositions", () => {
-  it("Create deposition and return status code 201", async () => {
-    const response = await supertest(app)
-      .post("/deposition")
-      .send(testFactory.newDeposition());
-    expect(response.status).toBe(201);
-  });
   it("Try to create deposition with some field missing and return 422", async () => {
     const response = await supertest(app)
       .post("/deposition")
@@ -34,13 +28,14 @@ describe("Budget", () => {
 });
 
 describe("Portfolio", () => {
-  it("Get portfolio and return status code 200", async () => {
+  it("Get empty portfolio and return status code 404", async () => {
     const response = await supertest(app).get("/images");
-    expect(response.status).toBe(200);
+    expect(response.status).toBe(404);
   });
 });
 afterAll(async () => {
-  await prisma.$executeRaw`TRUNCATE TABLE depositions`;
-  await prisma.$executeRaw`TRUNCATE TABLE budgets`;
+  await prisma.$executeRaw`TRUNCATE TABLE depositions CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE users CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE budgets CASCADE`;
   await prisma.$disconnect();
 });

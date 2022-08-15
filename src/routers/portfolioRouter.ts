@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import * as portfolioController from "../controllers/portfolioController.js"
+import * as portfolioController from "../controllers/portfolioController"
 
 const portfolioRouter = Router();
 

@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 
-import AppLog from './../events/AppLog.js';
+import AppLog from './../events/AppLog';
 
 const prisma = new PrismaClient();
 exec();

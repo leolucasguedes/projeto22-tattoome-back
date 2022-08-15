@@ -1,13 +1,13 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-import * as authRepository from "../repositories/authRepository.js";
-import { CreateUserData, LoginBody } from "../schemas/authSchema.js";
+import * as authRepository from "../repositories/authRepository";
+import { CreateUserData, LoginBody } from "../schemas/authSchema";
 
-import AppError from "../config/error.js";
-import AppLog from "../events/AppLog.js";
+import AppError from "../config/error";
+import AppLog from "../events/AppLog";
 
-import "../config/setup.js"
+import "../config/setup"
 
 export async function createUser(userInfo: CreateUserData) {
   const SALT_ROUNDS: number = +process.env.SALT_ROUNDS || 10;
@@ -55,3 +55,8 @@ export async function loginUser(userInfo: LoginBody) {
   AppLog("Service", "Login done");
   return token;
 }
+
+export const authService = {
+  createUser,
+  loginUser
+};

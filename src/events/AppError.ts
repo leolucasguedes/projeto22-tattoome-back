@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
-import AppLog from './AppLog.js';
-import AppError from '../config/error.js';
+import AppLog from './AppLog';
+import AppError from '../config/error';
 
 function ExceptionHandler(
   error: any,

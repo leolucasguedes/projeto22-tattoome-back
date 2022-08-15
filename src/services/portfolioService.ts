@@ -1,9 +1,9 @@
-import * as portfolioRepository from "../repositories/portfolioRepository.js";
+import * as portfolioRepository from "../repositories/portfolioRepository";
 
-import AppError from "../config/error.js";
-import AppLog from "../events/AppLog.js";
+import AppError from "../config/error";
+import AppLog from "../events/AppLog";
 
-import "../config/setup.js";
+import "../config/setup";
 
 export async function getImages() {
   const images: any = await portfolioRepository.find();
@@ -17,3 +17,7 @@ export async function getImages() {
   }
   AppLog("Service", "Images got");
 }
+
+export const portfolioService = {
+  getImages
+};

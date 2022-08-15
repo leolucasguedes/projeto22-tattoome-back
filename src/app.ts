@@ -2,10 +2,10 @@ import express, { json } from "express";
 import "express-async-errors";
 import cors from "cors";
 import helmet from "helmet";
-import "./config/setup.js"
+import "./config/setup"
 
-import router from "./routers/index.js";
-import ExceptionHandler from './events/AppError.js';
+import router from "./routers/index";
+import ExceptionHandler from './events/AppError';
 
 const app = express();
 

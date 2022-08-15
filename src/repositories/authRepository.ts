@@ -1,5 +1,5 @@
-import prisma from "../config/db.js";
-import { CreateUserData } from "../schemas/authSchema.js";
+import prisma from "../config/db";
+import { CreateUserData } from "../schemas/authSchema";
 
 export async function create(user: CreateUserData) {
   await prisma.user.create({ data: user });
@@ -16,3 +16,10 @@ export function findUser(id:number) {
 export function findUserByEmail(email:string) {
   return prisma.user.findUnique({where:{email}})
 }
+
+export const authRepository = {
+  create,
+  findByEmail,
+  findUser,
+  findUserByEmail
+};

@@ -1,12 +1,12 @@
 import { User } from "@prisma/client";
 import { NextFunction, Request, Response } from "express";
-import { findUser } from "../repositories/authRepository.js";
+import { findUser } from "../repositories/authRepository";
 import jwt from "jsonwebtoken";
 
-import AppError from "../config/error.js";
-import AppLog from "../events/AppLog.js";
+import AppError from "../config/error";
+import AppLog from "../events/AppLog";
 
-import "../config/setup.js";
+import "../config/setup";
 
 type TokenUser = Omit<User, "password">;
 

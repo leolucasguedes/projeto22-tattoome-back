@@ -1,8 +1,8 @@
 import { Router } from "express";
 
-import validSchema from "../middlewares/schemaValidator.js"
-import depositionSchema from "../schemas/depositionSchema.js";
-import * as depositionController from "../controllers/depositionController.js"
+import validSchema from "../middlewares/schemaValidator"
+import depositionSchema from "../schemas/depositionSchema";
+import * as depositionController from "../controllers/depositionController"
 
 const depositionRouter = Router();
 

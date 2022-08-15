@@ -1,10 +1,11 @@
 import { faker } from "@faker-js/faker"
 import supertest from "supertest"
-import app from "../../src/app.js"
+import app from "../../src/app"
+import { LoginBody } from "../../src/schemas/authSchema";
 
 const newUser = () => {
 	return {
-		name: faker.name,
+		name: "TestName",
 		email: faker.internet.email(),
 		password: "12345678",
 		confirmPassword: "12345678"
@@ -19,7 +20,7 @@ const newUserWithoutFields = () => {
 
 const alreadyRegisteredUser = () => {
 	return {
-		name: faker.name,
+		name: "TestName",
 		email: "admin@driven.com",
 		password: "12345678",
 		confirmPassword: "12345678"
@@ -48,6 +49,7 @@ const dataWhithoutField = () => {
 
 async function generateUserRegistered() {
     const user ={ 
+		name: "TestName",
         email: faker.internet.email(), 
         password: "12345678",
         confirmPassword: "12345678"
@@ -57,6 +59,10 @@ async function generateUserRegistered() {
     return user
 }
 
+async function generateLogin(user: LoginBody) {
+    await supertest(app).post("/signin").send(user)
+}
+
 export {
 	newUser,
 	newUserWithoutFields,
@@ -64,5 +70,6 @@ export {
 	wrongPassword,
 	wrongEmail,
 	dataWhithoutField,
-	generateUserRegistered
+	generateUserRegistered,
+	generateLogin
 }

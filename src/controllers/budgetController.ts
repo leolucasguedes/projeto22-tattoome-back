@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import * as budgetService from "../services/budgetService.js";
-import AppLog from "../events/AppLog.js";
-import { CreateBudgetData } from "../schemas/budgetSchema.js";
+import * as budgetService from "../services/budgetService";
+import AppLog from "../events/AppLog";
+import { CreateBudgetData } from "../schemas/budgetSchema";
 
 export async function createBudget(req: Request, res: Response) {
   const body: CreateBudgetData = req.body;

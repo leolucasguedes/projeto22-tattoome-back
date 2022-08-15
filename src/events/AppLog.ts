@@ -1,5 +1,5 @@
-import ITypes from '../interfaces/logInterface.js';
-import "../config/setup.js"
+import ITypes from '../interfaces/logInterface';
+import "../config/setup"
 
 const types: ITypes = {
   Middleware: 'magenta',

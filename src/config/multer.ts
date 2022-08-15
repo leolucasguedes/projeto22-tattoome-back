@@ -8,7 +8,7 @@ const multerConfig = {
     destination: (req, file, cb) => {
       cb(null, path.resolve("../assets/images"));
     },
-    filename: (req, file, cb) => {
+    filename: (req, file, cb: any) => {
       crypto.randomBytes(16, (err, hash) => {
         if (err) cb(err);
 

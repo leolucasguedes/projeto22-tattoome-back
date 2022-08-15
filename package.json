@@ -1,13 +1,12 @@
 {
   "name": "projeto22-tattoome-back",
   "version": "1.0.0",
-  "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "npx prisma migrate deploy && tsc",
-    "start": "node dist/src/server.ts",
-    "dev": "nodemon src/server.ts",
+    "start": "tsc && node dist/src/server.js",
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "dev:test": "dotenv -e .env.test prisma migrate dev && dotenv -e .env.test nodemon src/server.ts",
     "test": "dotenv -e .env.test prisma migrate dev && NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest -- --coverage -i",
     "test:unit": "NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest -- -i --coverage --testPathPattern=tests/unit",
@@ -53,6 +52,7 @@
     "supertest": "^6.2.4",
     "ts-jest": "^28.0.7",
     "ts-node": "^10.8.2",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^4.7.4"
   }
 }

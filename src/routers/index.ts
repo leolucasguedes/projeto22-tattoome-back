@@ -1,9 +1,9 @@
 import { Router } from "express";
 
-import authRouter from "./authRouter.js";
-import depositionRouter from "./depositionRouter.js";
-import budgetRouter from "./budgetRouter.js";
-import portfolioRouter from "./portfolioRouter.js";
+import authRouter from "./authRouter";
+import depositionRouter from "./depositionRouter";
+import budgetRouter from "./budgetRouter";
+import portfolioRouter from "./portfolioRouter";
 
 const router = Router();
 

@@ -1,7 +1,7 @@
-import prisma from "../../src/config/db.js"
-import app from "../../src/app.js"
+import prisma from "../../src/config/db"
+import app from "../../src/app"
 import supertest from "supertest"
-import * as userFactory from "../factories/userFactory.js"
+import * as userFactory from "../factories/userFactory"
 
 beforeAll(async () => {
   const data = {
@@ -36,7 +36,8 @@ describe("SignUp", () => {
 
 describe("SignIn", () => {
 	it("Sign in with valid credentials and return token and status code 200", async () => {
-		const user = await userFactory.generateUserRegistered()
+		const userData = await userFactory.generateUserRegistered()
+		const user = {email: userData.email, password: userData.password}
 		const response = await supertest(app)
 			.post("/signin")
 			.send(user)
@@ -44,8 +45,8 @@ describe("SignIn", () => {
 		expect(response.body.token).toBeDefined()
 	})
 	it("Sign in with wrong password and return status code 401", async () => {
-		const user = await userFactory.generateUserRegistered()
-		user.password = "123456789"
+		const userData = await userFactory.generateUserRegistered()
+		const user = {email: userData.email, password: "123456789"}
 		const response = await supertest(app)
 			.post("/signin")
 			.send(user)
@@ -65,6 +66,7 @@ describe("SignIn", () => {
 	})
 })
 afterAll(async () => {
-	await prisma.$executeRaw`TRUNCATE TABLE users`
+	await prisma.$executeRaw`TRUNCATE TABLE depositions CASCADE`
+	await prisma.$executeRaw`TRUNCATE TABLE users CASCADE`
 	await prisma.$disconnect();
   });

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { reset } from "../controllers/e2eTestController.js";
+import { reset } from "../controllers/e2eTestController";
 
 const e2eRouter = Router();
 
