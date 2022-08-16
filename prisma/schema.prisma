@@ -22,16 +22,6 @@ model User {
   @@map("users")
 }
 
-model Feedback {
-  id        Int      @id @default(autoincrement())
-  username  String
-  text      String
-  image     Bytes
-  createdAt DateTime @default(now())
-
-  @@map("feedbacks")
-}
-
 model Deposition {
   id        Int      @id @default(autoincrement())
   stars     Int
@@ -45,11 +35,10 @@ model Deposition {
 }
 
 model Portfolio {
-  id     Int           @id @default(autoincrement())
-  type   PortfolioTYpe
-  arts   Art[]
-  flashs Flash[]
-  works  Work[]
+  id       Int           @id @default(autoincrement())
+  imageURL String
+  type     PortfolioTYpe
+  createdAt   DateTime  @default(now())
 
   @@map("portfolio_images")
 }
@@ -58,39 +47,6 @@ enum PortfolioTYpe {
   Work
   Art
   Flash
-}
-
-model Art {
-  id          Int       @id @default(autoincrement())
-  description String
-  image       Bytes
-  createdAt   DateTime  @default(now())
-  portfolioId Int
-  portfolio   Portfolio @relation(fields: [portfolioId], references: [id])
-
-  @@map("arts")
-}
-
-model Flash {
-  id          Int       @id @default(autoincrement())
-  description String
-  image       Bytes
-  createdAt   DateTime  @default(now())
-  portfolioId Int
-  portfolio   Portfolio @relation(fields: [portfolioId], references: [id])
-
-  @@map("flashs")
-}
-
-model Work {
-  id          Int       @id @default(autoincrement())
-  description String
-  image       Bytes
-  createdAt   DateTime  @default(now())
-  portfolioId Int
-  portfolio   Portfolio @relation(fields: [portfolioId], references: [id])
-
-  @@map("works")
 }
 
 model Budget {
@@ -102,7 +58,7 @@ model Budget {
   size        String
   createdAt   DateTime    @default(now())
   userId      Int?
-  user        User?        @relation(fields: [userId], references: [id])
+  user        User?       @relation(fields: [userId], references: [id])
   references  Reference[]
 
   @@map("budgets")
