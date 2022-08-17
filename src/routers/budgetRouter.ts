@@ -18,6 +18,7 @@ budgetRouter.post("/budget/images", multer(multerConfig).single('file'), async (
     const budgetId: number = await budgetService.getBudgetId();
 
     await budgetService.saveReference(result, budgetId)
+    res.json("Budget done");
 });
 
 export default budgetRouter;
