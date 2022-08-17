@@ -35,10 +35,10 @@ model Deposition {
 }
 
 model Portfolio {
-  id       Int           @id @default(autoincrement())
-  imageURL String
-  type     PortfolioTYpe
-  createdAt   DateTime  @default(now())
+  id        Int           @id @default(autoincrement())
+  imageURL  String
+  type      PortfolioTYpe
+  createdAt DateTime      @default(now())
 
   @@map("portfolio_images")
 }
@@ -66,7 +66,7 @@ model Budget {
 
 model Reference {
   id       Int    @id @default(autoincrement())
-  image    Bytes
+  image    String
   budgetId Int
   budget   Budget @relation(fields: [budgetId], references: [id])
 
