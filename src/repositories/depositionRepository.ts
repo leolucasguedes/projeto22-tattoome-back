@@ -5,6 +5,16 @@ export async function create(testimonial: CreateDepositionData) {
   await prisma.deposition.create({ data: testimonial });
 }
 
+export async function get() {
+  const depositions = await prisma.deposition.findMany({
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
+  return depositions;
+}
+
 export const depositionRepository = {
-  create
+  create,
+  get
 };

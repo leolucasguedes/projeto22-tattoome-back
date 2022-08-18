@@ -7,5 +7,6 @@ import * as depositionController from "../controllers/depositionController"
 const depositionRouter = Router();
 
 depositionRouter.post("/deposition", validSchema(depositionSchema, "./deposition"), depositionController.createTestimonial);
+depositionRouter.get("/deposition", depositionController.getTestimonials);
 
 export default depositionRouter;

@@ -9,6 +9,14 @@ export async function createOneTestimonial(testimonialInfo: CreateDepositionData
   AppLog("Service", "Testimonial Created");
 }
 
+export async function getDepositions() {
+
+  const depositions = await depositionRepository.get();
+  AppLog("Service", "Testimonials got");
+  return depositions;
+}
+
 export const depositionService = {
-  createOneTestimonial
+  createOneTestimonial,
+  getDepositions
 };

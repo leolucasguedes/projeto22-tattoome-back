@@ -18,7 +18,7 @@ export async function saveReference(url: string, budgetId: number) {
 export async function getBudgetId() {
   const result = await budgetRepository.get();
 
-  const size = result.length;
+  const size = result.length + 1;
   return size;
 }
 

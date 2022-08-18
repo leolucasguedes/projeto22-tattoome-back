@@ -37,13 +37,13 @@ model Deposition {
 model Portfolio {
   id        Int           @id @default(autoincrement())
   imageURL  String
-  type      PortfolioTYpe
+  type      PortfolioType
   createdAt DateTime      @default(now())
 
   @@map("portfolio_images")
 }
 
-enum PortfolioTYpe {
+enum PortfolioType {
   Work
   Art
   Flash
