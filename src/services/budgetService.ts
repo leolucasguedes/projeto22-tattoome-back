@@ -15,6 +15,12 @@ export async function saveReference(url: string, budgetId: number) {
   AppLog("Service", "Reference saved");
 }
 
+export async function getBudgets(id: number) {
+  const results = await budgetRepository.getUserBudgets(id);
+
+  return results;
+}
+
 export async function getBudgetId() {
   const result = await budgetRepository.get();
 

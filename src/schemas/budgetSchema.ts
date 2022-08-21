@@ -9,7 +9,8 @@ const budgetSchema = Joi.object<CreateBudgetData>({
     email: Joi.string().email().required(),
     number: Joi.string().max(11).required(),
     description: Joi.string().required(),
-    size: Joi.string().required()
+    size: Joi.string().required(),
+    userId: Joi.number()
   });
 
 export default budgetSchema;

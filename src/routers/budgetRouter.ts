@@ -10,7 +10,8 @@ import { uploadToCloudinary } from "../config/cloudnary";
 const budgetRouter = Router();
 
 budgetRouter.post("/budget", validSchema(budgetSchema, "./budget"), budgetController.createBudget);
-budgetRouter.post("/budget/images", multer(multerConfig).single('file'), async (req, res) => {
+budgetRouter.get("/budget/user/:id", budgetController.getUserBudgets);
+budgetRouter.post("/posts", multer(multerConfig).single('file'), async (req, res) => {
     const locaFilePath = req.file.path;
 
     const result: any = await uploadToCloudinary(locaFilePath);

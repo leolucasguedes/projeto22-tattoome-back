@@ -17,3 +17,12 @@ export async function createBudget(req: Request, res: Response) {
   AppLog("Controller", "Create budget done");
   res.sendStatus(201);
 }
+
+export async function getUserBudgets(req: Request, res: Response) {
+  const { id } = req.params;
+  
+  const results = await budgetService.getBudgets(Number(id));
+
+  AppLog("Controller", "Budgets got");
+  res.status(200).send(results);
+};

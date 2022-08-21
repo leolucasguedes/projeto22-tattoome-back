@@ -11,6 +11,11 @@ export async function save(url: string, budgetId: number) {
   await prisma.reference.create({ data: reference});
 }
 
+export async function getUserBudgets(userId: number) {
+  const results = await prisma.budget.findMany({ where: { userId } });
+  return results;
+}
+
 export async function get() {
   const size = await prisma.budget.groupBy({
     by: ["id"],
