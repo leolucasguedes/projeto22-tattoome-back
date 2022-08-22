@@ -1,11 +1,12 @@
 import prisma from "../config/db";
 
 export async function find() {
-  await prisma.portfolio.findMany({
+  const images = await prisma.portfolio.findMany({
     orderBy: {
-      createdAt: 'desc',
+      createdAt: "desc",
     },
   });
+  return images;
 }
 
 export const portfolioRepository = {

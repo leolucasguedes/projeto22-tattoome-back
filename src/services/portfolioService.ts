@@ -3,8 +3,6 @@ import * as portfolioRepository from "../repositories/portfolioRepository";
 import AppError from "../config/error";
 import AppLog from "../events/AppLog";
 
-import "../config/setup";
-
 export async function getImages() {
   const images: any = await portfolioRepository.find();
   if (!images) {
@@ -16,6 +14,7 @@ export async function getImages() {
     );
   }
   AppLog("Service", "Images got");
+  return images;
 }
 
 export const portfolioService = {

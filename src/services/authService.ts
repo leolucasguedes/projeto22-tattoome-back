@@ -51,9 +51,10 @@ export async function loginUser(userInfo: LoginBody) {
   const secretKey = process.env.JWT_KEY;
   delete user.password;
   const token = jwt.sign(user, secretKey);
+  const sendUser = { id: user.id, name: user.name, token}
 
   AppLog("Service", "Login done");
-  return token;
+  return sendUser;
 }
 
 export const authService = {
