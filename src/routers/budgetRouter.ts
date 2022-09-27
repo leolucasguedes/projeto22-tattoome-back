@@ -10,16 +10,16 @@ import { uploadToCloudinary } from "../config/cloudnary";
 const budgetRouter = Router();
 
 budgetRouter.post("/budget", validSchema(budgetSchema, "./budget"), budgetController.createBudget);
-budgetRouter.get("/budget/user/:id", budgetController.getUserBudgets);
 budgetRouter.post("/posts", multer(multerConfig).single('file'), async (req, res) => {
-    const locaFilePath = req.file.path;
+    const localFilePath = req.file.path;
 
-    const result: any = await uploadToCloudinary(locaFilePath);
+    const result: any = await uploadToCloudinary(localFilePath);
 
     const budgetId: number = await budgetService.getBudgetId();
 
     await budgetService.saveReference(result, budgetId)
     res.json("Budget done");
 });
+budgetRouter.get("/budget/user/:id", budgetController.getUserBudgets);
 
 export default budgetRouter;

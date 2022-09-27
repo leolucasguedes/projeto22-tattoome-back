@@ -4,7 +4,7 @@ import AppLog from "../events/AppLog";
 
 export async function createTestimonial(req: Request, res: Response) {
   const { stars, text, username }: { stars: number, text: string, username: string} = req.body;
-  const user = res.locals.user || {id: 1};
+  const user = res.locals.user;
   const userId: number = user.id;
 
   const testimonialInfo = { stars, text, username, userId};

@@ -19,6 +19,5 @@ export async function verifyUser(req: Request, res: Response, next: NextFunction
   }
 
   res.locals.user = user;
-  console.log(user);
   next();
 }
