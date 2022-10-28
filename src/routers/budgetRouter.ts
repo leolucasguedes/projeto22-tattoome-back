@@ -17,9 +17,10 @@ budgetRouter.post("/posts", multer(multerConfig).single('file'), async (req, res
 
     const budgetId: number = await budgetService.getBudgetId();
 
-    await budgetService.saveReference(result, budgetId)
-    res.json("Budget done");
+    const reference = await budgetService.saveReference(result, budgetId)
+    res.status(200).send(reference);
 });
+budgetRouter.delete("/posts/:id", budgetController.deleteImage);
 budgetRouter.get("/budget/user/:id", budgetController.getUserBudgets);
 
 export default budgetRouter;

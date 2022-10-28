@@ -11,8 +11,15 @@ export async function createOneBudget(budgetInfo: CreateBudgetData | CreateBudge
 
 export async function saveReference(url: string, budgetId: number) {
 
-  await budgetRepository.save(url, budgetId);
+  const reference = await budgetRepository.save(url, budgetId);
   AppLog("Service", "Reference saved");
+  return reference;
+}
+
+export async function deleteReference(id: number) {
+
+  await budgetRepository.remove(id);
+  AppLog("Service", "Reference deleted");
 }
 
 export async function getBudgets(id: number) {

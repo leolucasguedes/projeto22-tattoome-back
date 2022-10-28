@@ -21,3 +21,12 @@ export async function getUserBudgets(req: Request, res: Response) {
   AppLog("Controller", "Budgets got");
   res.status(200).send(results);
 };
+
+export async function deleteImage(req: Request, res: Response) {
+  const { id } = req.params;
+  
+  await budgetService.deleteReference(Number(id));
+
+  AppLog("Controller", "Image deleted");
+  res.sendStatus(200);
+};

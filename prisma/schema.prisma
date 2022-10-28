@@ -59,7 +59,6 @@ model Budget {
   createdAt   DateTime    @default(now())
   userId      Int?
   user        User?       @relation(fields: [userId], references: [id])
-  references  Reference[]
 
   @@map("budgets")
 }
@@ -68,7 +67,6 @@ model Reference {
   id       Int    @id @default(autoincrement())
   image    String
   budgetId Int
-  budget   Budget @relation(fields: [budgetId], references: [id])
 
   @@map("references")
 }

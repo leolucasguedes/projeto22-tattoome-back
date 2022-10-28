@@ -7,8 +7,13 @@ export async function create(budget: CreateBudgetData | CreateBudgetDataNoUser) 
 }
 
 export async function save(url: string, budgetId: number) {
-  const reference = {image: url, budgetId: budgetId}
-  await prisma.reference.create({ data: reference});
+  const referenceData = {image: url, budgetId: budgetId};
+  const reference = await prisma.reference.create({ data: referenceData });
+  return reference;
+}
+
+export async function remove(id: number) {
+  await prisma.reference.delete({ where:{id} })
 }
 
 export async function getUserBudgets(userId: number) {
