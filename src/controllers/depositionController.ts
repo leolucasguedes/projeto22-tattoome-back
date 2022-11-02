@@ -3,9 +3,7 @@ import * as depositionService from "../services/depositionService";
 import AppLog from "../events/AppLog";
 
 export async function createTestimonial(req: Request, res: Response) {
-  const { stars, text, username }: { stars: number, text: string, username: string} = req.body;
-  const user = res.locals.user;
-  const userId: number = user.id;
+  const { stars, text, username, userId }: { stars: number, text: string, username: string, userId: number} = req.body;
 
   const testimonialInfo = { stars, text, username, userId};
 
@@ -20,4 +18,13 @@ export async function getTestimonials(req: Request, res: Response) {
 
   AppLog("Controller", "Get depositions done");
   res.status(200).send(depositions);
+}
+
+export async function deleteTestimonials(req: Request, res: Response) {
+  const { id } = req.params;
+
+  await depositionService.deleteDeposition(Number(id));
+
+  AppLog("Controller", "Deposition removed done");
+  res.sendStatus(200);
 }

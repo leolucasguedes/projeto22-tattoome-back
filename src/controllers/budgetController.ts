@@ -22,6 +22,15 @@ export async function getUserBudgets(req: Request, res: Response) {
   res.status(200).send(results);
 };
 
+export async function deleteBudget(req: Request, res: Response) {
+  const { id } = req.params;
+
+  await budgetService.deleteOneBudget(Number(id));
+
+  AppLog("Controller", "Budget removed done");
+  res.sendStatus(200);
+}
+
 export async function deleteImage(req: Request, res: Response) {
   const { id } = req.params;
   

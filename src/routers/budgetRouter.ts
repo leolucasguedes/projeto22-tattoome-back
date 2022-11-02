@@ -22,5 +22,6 @@ budgetRouter.post("/posts", multer(multerConfig).single('file'), async (req, res
 });
 budgetRouter.delete("/posts/:id", budgetController.deleteImage);
 budgetRouter.get("/budget/user/:id", budgetController.getUserBudgets);
+budgetRouter.delete("/budget/:id", budgetController.deleteBudget);
 
 export default budgetRouter;

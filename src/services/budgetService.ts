@@ -35,6 +35,12 @@ export async function getBudgetId() {
   return size;
 }
 
+export async function deleteOneBudget(id: number) {
+
+  await budgetRepository.removeOneBudget(id);
+  AppLog("Service", "Budget deleted");
+}
+
 export const budgetService = {
   createOneBudget
 };

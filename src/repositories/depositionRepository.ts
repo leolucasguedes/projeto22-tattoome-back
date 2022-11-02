@@ -14,7 +14,12 @@ export async function get() {
   return depositions;
 }
 
+export async function remove(id: number) {
+  await prisma.deposition.delete({ where:{id} });
+}
+
 export const depositionRepository = {
   create,
-  get
+  get,
+  remove
 };

@@ -16,7 +16,14 @@ export async function getDepositions() {
   return depositions;
 }
 
+export async function deleteDeposition(id: number) {
+
+  await depositionRepository.remove(id);
+  AppLog("Service", "Deposition deleted");
+}
+
 export const depositionService = {
   createOneTestimonial,
-  getDepositions
+  getDepositions,
+  deleteDeposition
 };
