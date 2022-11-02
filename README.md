@@ -112,6 +112,22 @@ POST /deposition
 
 #
 
+#### Delete a deposition by identifier
+
+```http
+DELETE /deposition/:id
+```
+
+#### Request:
+
+| Params | Type      | Description            |
+| :----- | :-------- | :--------------------- |
+| `id`   | `integer` | **Required**. valid id |
+
+<br/>
+
+#
+
 #### Get all users depositions
 
 ```http
@@ -229,6 +245,22 @@ GET /budget/user/:id
 ]
 ```
 </br>
+
+#
+
+#### Delete a budget by identifier
+
+```http
+DELETE /budget/:id
+```
+
+#### Request:
+
+| Params | Type      | Description            |
+| :----- | :-------- | :--------------------- |
+| `id`   | `integer` | **Required**. valid id |
+
+<br/>
 
 #
 
